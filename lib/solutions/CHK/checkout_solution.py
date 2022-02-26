@@ -48,11 +48,21 @@ def checkout(skus):
     # special logic for the promotions
 
     # buy one type get another type free
-    temp_Es = sku_counts["E"]
-    while temp_Es >= 2:
-        temp_Es -= 2
-        if sku_counts["B"] > 0:
-            sku_counts["B"] -= 1
+    cross_promotion_deals = dict()
+    # tuple containing the item you get off, number of this item you need, and number of those that are free
+    cross_promotion_deals["E"] = ("B", 2, 1)
+    cross_promotion_deals["N"] = ("M", 3, 1)
+    cross_promotion_deals["R"] = ("Q", 3, 1)
+
+    for sku in cross_promotion_deals:
+        (other_item_sku, n_needed, n_free) = cross_promotion_deals[sku]
+        temp_this_sku = sku_counts[sku]
+        while temp_this_sku >= n_needed:
+            temp_this_sku -= n_needed
+            if sku_counts[other_item_sku] > 0:
+                sku_counts[other_item_sku] -= n_free
+            if sku_counts[other_item_sku] < 0:
+                sku_counts[other_item_sku] = 0
 
     ret = 0
 
@@ -92,3 +102,4 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
+

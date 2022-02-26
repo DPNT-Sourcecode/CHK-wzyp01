@@ -69,4 +69,12 @@ class TestCheckout():
         assert checkout_solution.checkout("VV") == 90
 
 
+        # check cross item deals
+
+        assert checkout_solution.checkout("NNNM") == 3*checkout_solution.prices["N"]
+
+        assert checkout_solution.checkout("RRRQ") == 3*checkout_solution.prices["R"]
+
+
+
 
