@@ -56,7 +56,7 @@ class TestCheckout():
         assert checkout_solution.checkout("HHHHHHHHHH") == 80
         assert checkout_solution.checkout("HHHHH") == 45
 
-        assert checkout_solution.checkout("KK") == 150
+        assert checkout_solution.checkout("KK") == 120
 
         assert checkout_solution.checkout("PPPPP") == 200
 
@@ -76,4 +76,10 @@ class TestCheckout():
         assert checkout_solution.checkout("RRRQ") == 3*checkout_solution.prices["R"]
 
         assert checkout_solution.checkout("RRRQNNNM") == 3 * checkout_solution.prices["R"] + 3*checkout_solution.prices["N"]
+
+        assert checkout_solution.checkout("SSS") == 45
+
+        assert checkout_solution.checkout("STX") == 45
+
+        assert checkout_solution.checkout("STXX") == 45 + min(checkout_solution.prices["X"], checkout_solution.prices["T"], checkout_solution.prices["S"])
 

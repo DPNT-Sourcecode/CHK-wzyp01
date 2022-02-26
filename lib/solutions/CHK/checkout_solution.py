@@ -107,7 +107,16 @@ def checkout(skus):
     price_sku_combo = price_sku_combo[indices]
 
     while np.sum(count_sku_combo) >= 3:
-        pass
+        count_this_group = 0
+        for i in range(len(count_sku_combo)):
+            while count_sku_combo[i] > 0:
+                count_sku_combo[i] -= 1
+                sku_counts[combo_deal_skus[i]] -= 1
+                count_this_group += 1
+                if count_this_group == 3:
+                    count = 0
+                    ret += 45
+                    break
     # tally up the individual prices
     for sku in sku_counts:
         ret += sku_counts[sku] * prices[sku]
@@ -121,4 +130,5 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
+
 
