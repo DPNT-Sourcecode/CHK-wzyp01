@@ -1,3 +1,4 @@
+import numpy as np
 
 prices = {"A": 50,
           "B": 30,
@@ -9,7 +10,7 @@ prices = {"A": 50,
           "H": 10,
           "I": 35,
           "J": 60,
-          "K": 80,
+          "K": 70,
           "L": 90,
           "M": 15,
           "N": 40,
@@ -17,14 +18,14 @@ prices = {"A": 50,
           "P": 50,
           "Q": 30,
           "R": 50,
-          "S": 30,
+          "S": 20,
           "T": 20,
           "U": 40,
           "V": 50,
           "W": 20,
-          "X": 90,
-          "Y": 10,
-          "Z": 50}
+          "X": 17,
+          "Y": 20,
+          "Z": 21}
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -75,7 +76,7 @@ def checkout(skus):
     multi_pack_prices["B"] = ((2, 45),)
     multi_pack_prices["F"] = ((3, 2 * prices["F"]),)
     multi_pack_prices["H"] = ((10, 80), (5, 45))
-    multi_pack_prices["K"] = ((2, 150),)
+    multi_pack_prices["K"] = ((2, 120),)
     multi_pack_prices["P"] = ((5, 200),)
     multi_pack_prices["Q"] = ((3, 80),)
     multi_pack_prices["U"] = ((4, 3*prices["U"]),)
@@ -88,7 +89,25 @@ def checkout(skus):
                     ret += multi_pack_price
                     sku_counts[sku] -= n
 
+    combo_deal_skus = ["S", "T", "X", "Y", "Z"]
+    count_sku_combo = []
+    price_sku_combo = []
 
+    for sku in combo_deal_skus:
+        count_sku_combo.append(sku_counts[sku])
+        price_sku_combo.append(prices[sku])
+
+    combo_deal_skus = np.array(combo_deal_skus)
+    count_sku_combo = np.array(count_sku_combo)
+    price_sku_combo = np.array(price_sku_combo)
+
+    indices = np.argsort(price_sku_combo)[::-1]
+    combo_deal_skus = combo_deal_skus[indices]
+    count_sku_combo = count_sku_combo[indices]
+    price_sku_combo = price_sku_combo[indices]
+
+    while np.sum(count_sku_combo) >= 3:
+        pass
     # tally up the individual prices
     for sku in sku_counts:
         ret += sku_counts[sku] * prices[sku]
@@ -102,3 +121,4 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
+
