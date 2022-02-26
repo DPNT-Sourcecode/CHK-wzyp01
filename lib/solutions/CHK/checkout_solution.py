@@ -64,6 +64,12 @@ def checkout(skus):
     multi_pack_prices["A"]= ((5, 200), (3, 130))
     multi_pack_prices["B"] = ((2, 45),)
     multi_pack_prices["F"] = ((3, 2 * prices["F"]),)
+    multi_pack_prices["H"] = ((10, 80), (5, 45))
+    multi_pack_prices["K"] = ((2, 150),)
+    multi_pack_prices["P"] = ((5, 200),)
+    multi_pack_prices["Q"] = ((3, 80),)
+    multi_pack_prices["U"] = ((4, 3*prices["U"]),)
+    multi_pack_prices["V"] = ((3, 130), (2, 90))
 
     for sku in sku_counts:
         if sku in multi_pack_prices:
@@ -71,27 +77,7 @@ def checkout(skus):
                 while sku_counts[sku] >= n:
                     ret += multi_pack_price
                     sku_counts[sku] -= n
-    # five_As_price = 200
-    # three_As_price = 130
-    # two_Bs_price = 45
-    # three_Fs_price = 2 * prices["F"]
-    #
-    # while sku_counts["A"] >= 5:
-    #     ret += five_As_price
-    #     sku_counts["A"] -= 5
-    #
-    # while sku_counts["A"] >= 3:
-    #     ret += three_As_price
-    #     sku_counts["A"] -= 3
-    #
-    # while sku_counts["B"] >= 2:
-    #     ret += two_Bs_price
-    #     sku_counts["B"] -= 2
-    #
-    # while sku_counts["F"] >= 3:
-    #     ret += three_Fs_price
-    #     sku_counts["F"] -= 3
-    #
+
 
     # tally up the individual prices
     for sku in sku_counts:
@@ -106,7 +92,3 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
-
-
-
-
