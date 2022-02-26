@@ -1,7 +1,8 @@
 # How to update and release new client library
 
 Change library version is:
-- `requirements.txt`
+- `build.gradle`
+- `pom.xml`
 
 Runner version = Client version + Runner patch
 Example:
