@@ -1,4 +1,5 @@
 import sys
+sys.path.append("lib")
 from tdl.queue.queue_based_implementation_runner import QueueBasedImplementationRunnerBuilder
 from tdl.runner.challenge_session import ChallengeSession
 from solutions.SUM import sum_solution
@@ -71,3 +72,4 @@ ChallengeSession\
     .with_config(Utils.get_config())\
     .with_action_provider(lambda: get_user_input(sys.argv[1:]))\
     .start()
+
