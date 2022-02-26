@@ -3,6 +3,9 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    if not isinstance(skus, str):
+        return -1
+
     empty_string = skus.replace("A", "").replace("B", "").replace("C", "").replace("D", "")
     if len(empty_string) > 0:
         return -1
