@@ -1,5 +1,4 @@
 from solutions.CHK import checkout_solution
-import pytest
 
 class TestCheckout():
     def test_checkout(self):
@@ -51,5 +50,23 @@ class TestCheckout():
         assert checkout_solution.checkout("EB") == 70
 
         assert checkout_solution.checkout("BEE") == 80
+
+
+        # check multibuys (post f)
+        assert checkout_solution.checkout("HHHHHHHHHH") == 80
+        assert checkout_solution.checkout("HHHHH") == 45
+
+        assert checkout_solution.checkout("KK") == 150
+
+        assert checkout_solution.checkout("PPPPP") == 200
+
+        assert checkout_solution.checkout("QQQ") == 80
+
+        assert checkout_solution.checkout("UUUU") == 3*checkout_solution.prices["U"]
+
+        assert checkout_solution.checkout("VVV") == 130
+
+        assert checkout_solution.checkout("VV") == 90
+
 
 
