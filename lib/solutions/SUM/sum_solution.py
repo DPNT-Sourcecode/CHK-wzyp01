@@ -1,10 +1,18 @@
 # noinspection PyShadowingBuiltins,PyUnusedLocal
 def compute(x, y):
     if x < 0 or x > 100:
-        pass
+        raise ValueError("Value x cannot be negative or greater than 100")
     if y < 0 or y > 100:
-        pass
+        raise ValueError("Value y cannot be negative or greater than 100")
+
+    if not isinstance(x, int):
+        raise TypeError("x must be an integer")
+
+    if not isinstance(y, int):
+        raise TypeError("y must be an integer")
+
 
     ret = x + y
     return ret
+
 
