@@ -134,6 +134,7 @@ def checkout(skus):
 
 
 if __name__ == "__main__":
+    print(checkout("ZZZS"))
     print(checkout("A"))
     print(checkout("AAA"))
     print(checkout("AABB"))

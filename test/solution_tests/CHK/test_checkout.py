@@ -90,3 +90,9 @@ class TestCheckout():
         assert checkout_solution.checkout("SSSTTTXXX") == 135
 
         assert checkout_solution.checkout("SSSTTTXXXP") == 135 + checkout_solution.prices["P"]
+
+        assert checkout_solution.checkout("ZZZS") == 65
+
+        assert checkout_solution.checkout("STXS") == 62
+
+        assert checkout_solution.checkout("STXZ") == 62
