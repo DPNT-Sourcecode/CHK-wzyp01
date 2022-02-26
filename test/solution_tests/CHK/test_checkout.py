@@ -75,6 +75,9 @@ class TestCheckout():
 
         assert checkout_solution.checkout("RRRQ") == 3*checkout_solution.prices["R"]
 
+        assert checkout_solution.checkout("RRRQNNNM") == 3 * checkout_solution.prices["R"] + 3*checkout_solution.prices["N"]
+
+
 
 
 
