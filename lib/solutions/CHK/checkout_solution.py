@@ -11,7 +11,8 @@ def checkout(skus):
         .replace("B", "")\
         .replace("C", "")\
         .replace("D", "")\
-        .replace("E", "")
+        .replace("E", "")\
+        .replace("F", "")
 
     if len(empty_string) > 0:
         return -1
@@ -21,16 +22,19 @@ def checkout(skus):
     Cs = skus.count("C")
     Ds = skus.count("D")
     Es = skus.count("E")
+    Fs = skus.count("F")
 
     price_A = 50
     price_B = 30
     price_C = 20
     price_D = 15
     price_E = 40
+    price_F = 10
 
     five_As_price = 200
     three_As_price = 130
     two_Bs_price = 45
+    three_Fs_price = 2*price_F
 
     temp_Es = Es
     while temp_Es >= 2:
@@ -52,11 +56,16 @@ def checkout(skus):
         ret += two_Bs_price
         Bs -= 2
 
+    while Fs >= 3:
+        ret += three_Fs_price
+        Fs -= 3
+
     ret += As*price_A
     ret += Bs*price_B
     ret += Cs*price_C
     ret += Ds*price_D
     ret += Es*price_E
+    ret += Fs*price_F
 
     return ret
 
@@ -66,4 +75,5 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
+
 
