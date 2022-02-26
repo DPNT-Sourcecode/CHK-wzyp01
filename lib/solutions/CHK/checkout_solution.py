@@ -58,20 +58,19 @@ def checkout(skus):
 
     # multipack prices
     multi_pack_prices = dict()
-    # dict of letter, then number, then price of that number
+    # dict of promotions
+    # tuple of tuples, which have number of items, then price
     # need to have highest number first
-    multi_pack_prices["A"]= ((5, 3), (200, 130))
-    multi_pack_prices["B"] = ((2,), (45,),)
-    multi_pack_prices["F"] = [(3), (2 * prices["F"])]
+    multi_pack_prices["A"]= ((5, 200), (3, 130))
+    multi_pack_prices["B"] = ((2, 45),)
+    multi_pack_prices["F"] = ((3, 2 * prices["F"]),)
 
     for sku in sku_counts:
         if sku in multi_pack_prices:
-            print(sku, multi_pack_prices[sku])
-            for k in multi_pack_prices[sku]:
-                print(k)
-                # while sku_counts[sku] >= n:
-                #     ret += multi_pack_price
-                #     sku_counts[sku] -= n
+            for n, multi_pack_price in multi_pack_prices[sku]:
+                while sku_counts[sku] >= n:
+                    ret += multi_pack_price
+                    sku_counts[sku] -= n
     # five_As_price = 200
     # three_As_price = 130
     # two_Bs_price = 45
@@ -107,6 +106,7 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
+
 
 
 
