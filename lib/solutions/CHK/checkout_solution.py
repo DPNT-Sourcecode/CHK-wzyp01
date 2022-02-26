@@ -37,7 +37,7 @@ def checkout(skus):
         temp_Es -= 2
         if Bs > 0:
             Bs -= 1
-            
+
     ret = 0
 
     while As >= 5:
@@ -65,3 +65,5 @@ if __name__ == "__main__":
     print(checkout("AAA"))
     print(checkout("AABB"))
     print(checkout("EEBB"))
+    print(checkout("AAAAA"))
+

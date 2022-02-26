@@ -19,10 +19,21 @@ class TestCheckout():
 
         assert checkout_solution.checkout("BB") == 45
 
-        assert checkout_solution.checkout("AAAAAA") == 260
+        assert checkout_solution.checkout("AAAAA") == 200
+
+        assert checkout_solution.checkout("AAAAAA") == 250
 
         assert checkout_solution.checkout("BBBB") == 90
 
         assert checkout_solution.checkout("AAAA") == 180
 
         assert checkout_solution.checkout("ABCD") == 115
+
+        assert checkout_solution.checkout("BBEE") == 110
+
+        assert checkout_solution.checkout("E") == 40
+
+        assert checkout_solution.checkout("EB") == 70
+
+        assert checkout_solution.checkout("BEE") == 80
+
