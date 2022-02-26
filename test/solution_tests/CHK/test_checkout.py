@@ -3,6 +3,9 @@ import pytest
 
 class TestCheckout():
     def test_checkout(self):
+        for sku in checkout_solution.prices:
+            assert checkout_solution.checkout(sku) == checkout_solution.prices[sku]
+
         assert checkout_solution.checkout("abc") == -1
 
         assert checkout_solution.checkout(1) == -1
@@ -48,4 +51,5 @@ class TestCheckout():
         assert checkout_solution.checkout("EB") == 70
 
         assert checkout_solution.checkout("BEE") == 80
+
 
