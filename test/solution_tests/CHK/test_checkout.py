@@ -83,3 +83,7 @@ class TestCheckout():
 
         assert checkout_solution.checkout("STXX") == 45 + min(checkout_solution.prices["X"], checkout_solution.prices["T"], checkout_solution.prices["S"])
 
+        assert checkout_solution.checkout("SSTTXX") == 90
+
+        assert checkout_solution.checkout("SSSTTTXXX") == 135
+

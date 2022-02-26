@@ -114,7 +114,7 @@ def checkout(skus):
                 sku_counts[combo_deal_skus[i]] -= 1
                 count_this_group += 1
                 if count_this_group == 3:
-                    count = 0
+                    count_this_group = 0
                     ret += 45
                     break
     # tally up the individual prices
@@ -130,5 +130,6 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
+    print(checkout("SSTTXX"))
 
 
