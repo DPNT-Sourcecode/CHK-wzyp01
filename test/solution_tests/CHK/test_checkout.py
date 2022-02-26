@@ -5,6 +5,8 @@ class TestCheckout():
         for sku in checkout_solution.prices:
             assert checkout_solution.checkout(sku) == checkout_solution.prices[sku]
 
+        assert checkout_solution.checkout("") == 0
+
         assert checkout_solution.checkout("abc") == -1
 
         assert checkout_solution.checkout(1) == -1
@@ -86,3 +88,5 @@ class TestCheckout():
         assert checkout_solution.checkout("SSTTXX") == 90
 
         assert checkout_solution.checkout("SSSTTTXXX") == 135
+
+        assert checkout_solution.checkout("SSSTTTXXXP") == 135 + checkout_solution.prices["P"]

@@ -89,6 +89,8 @@ def checkout(skus):
                     ret += multi_pack_price
                     sku_counts[sku] -= n
 
+    # first get counts and prices of the combo items
+    # then sort them in descending order according to price
     combo_deal_skus = ["S", "T", "X", "Y", "Z"]
     count_sku_combo = []
     price_sku_combo = []
@@ -106,9 +108,14 @@ def checkout(skus):
     count_sku_combo = count_sku_combo[indices]
     price_sku_combo = price_sku_combo[indices]
 
+    # if there are more than 3 of the combo items, remove them (starting with most expensive) and add 45 to price
+    # need to keep checking that there are 3 or more combo items
     if sum(count_sku_combo) >= 3:
+        # count_this_group tracks the trios
         count_this_group = 0
+        # iterate through combo items
         for i in range(len(count_sku_combo)):
+            # while there is at least one of this item, remove it from the counts
             while count_sku_combo[i] > 0:
                 count_sku_combo[i] -= 1
                 sku_counts[combo_deal_skus[i]] -= 1
@@ -118,6 +125,7 @@ def checkout(skus):
                     ret += 45
                     if np.sum(count_sku_combo) < 3:
                         break
+
     # tally up the individual prices
     for sku in sku_counts:
         ret += sku_counts[sku] * prices[sku]
