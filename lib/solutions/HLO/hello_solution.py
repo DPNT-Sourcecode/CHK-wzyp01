@@ -10,6 +10,5 @@ def hello(friend_name):
 
 if __name__ == "__main__":
     print(hello("John"))
-    print(hello(["john"]))
 
 
