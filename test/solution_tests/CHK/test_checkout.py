@@ -49,4 +49,3 @@ class TestCheckout():
 
         assert checkout_solution.checkout("BEE") == 80
 
-

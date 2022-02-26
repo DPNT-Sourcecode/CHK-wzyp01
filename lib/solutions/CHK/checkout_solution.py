@@ -75,5 +75,3 @@ if __name__ == "__main__":
     print(checkout("AABB"))
     print(checkout("EEBB"))
     print(checkout("AAAAA"))
-
-
