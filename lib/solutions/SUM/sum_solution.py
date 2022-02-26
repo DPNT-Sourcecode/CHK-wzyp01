@@ -15,5 +15,5 @@ def compute(x, y):
     ret = x + y
     return ret
 
-
-
+if __name__ == "__main__":
+    print(compute(1, 2))

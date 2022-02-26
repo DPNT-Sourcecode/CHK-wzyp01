@@ -28,4 +28,3 @@ class TestSum():
 
         with pytest.raises(TypeError):
             assert sum_solution.compute(1, "2")
-
